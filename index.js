@@ -2,16 +2,14 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 
-var managers = [];
-var engineers = [];
-var interns = [];
+var allPeople = [];
 
 //manager questions
 const managerQuestions = [
   {
     type: "input",
     message: "What is the team manager’s name",
-    name: "managerName",
+    name: "name",
   },
   {
     type: "input",
@@ -28,23 +26,13 @@ const managerQuestions = [
     message: "What is team manager’s office number",
     name: "managerOffice",
   },
-  //   {
-  //     type: "list",
-  //     message: "Which type of team member would you like to add",
-  //     name: "managerChoice",
-  //     choices: [
-  //       "Engineer",
-  //       "Intern",
-  //       "I dont' want to add any more team members",
-  //     ],
-  //   },
 ];
 //engineer questions
 const engineerQuestions = [
   {
     type: "input",
     message: "What is the engineer’s name",
-    name: "engineerName",
+    name: "name",
   },
   {
     type: "input",
@@ -125,7 +113,7 @@ function init() {
 function mainMenu() {
   inquirer.prompt(managerQuestions).then((managerResponse) => {
     console.log(managerResponse);
-    managers.push(managerResponse);
+    writeToFile("./dist/index2.html", managerResponse);
     addMore();
 
     // switch (managerResponse.managerChoice) {
@@ -145,6 +133,7 @@ function mainMenu() {
 function addEngineer() {
   inquirer.prompt(engineerQuestions).then((engineerResponse) => {
     console.log(engineerResponse);
+    appendFile("index2.html", engineerResponse);
     engineers.push(engineerResponse);
     addMore();
   });
@@ -156,4 +145,23 @@ function addIntern() {
     console.log(internResponse);
     addMore();
   });
+}
+
+//function to write html file
+function writeToFile(filename, data) {
+  const htmlDoc = generateHtml(data);
+  fs.writeFile("./dist/index2.html", htmlDoc, (err) =>
+    err ? console.log(err) : console.log("Success!")
+  );
+}
+
+//generate the html file
+function generateHtml(data) {
+  return `<div>${data.name}</div>
+
+
+
+
+  
+  `;
 }
