@@ -103,6 +103,8 @@ function addMore() {
         break;
       case "I dont' want to add any more team members":
         console.log("GoodBye");
+        console.log("all people here is", JSON.stringify(allPeople));
+        writeToFile("./dist/index2.html", allPeople);
     }
   });
 }
@@ -123,7 +125,16 @@ function mainMenu() {
       managerResponse.managerEmail,
       managerResponse.managerOffice
     );
-    allPeople.push(maanger);
+    allPeople.push(manager);
+
+    allPeople.forEach((a) => {
+      if (a.getRole() === "Manager") {
+        console.log("Manager found");
+      }
+    });
+
+    console.log("all people after add manager", allPeople);
+    writeToFile("./dist/index2.html", allPeople);
     addMore();
   });
 }
@@ -140,6 +151,7 @@ function addEngineer() {
     );
 
     allPeople.push(engineer);
+    console.log("all people after add engineer", allPeople);
 
     addMore();
   });
@@ -155,14 +167,23 @@ function addIntern() {
       internResponse.internEmail,
       internResponse.internSchool
     );
+    console.log(intern.getRole());
     allPeople.push(intern);
+    allPeople.forEach((a) => {
+      if (a.getRole() === "Intern") {
+        console.log("found it");
+      }
+    });
+    console.log("all people after add intern", allPeople);
     addMore();
   });
 }
 
 //function to write html file
 function writeToFile(filename, data) {
+  console.log("data here is", data);
   const htmlDoc = generateHtml(data);
+  console.log("html doc here", htmlDoc);
   fs.writeFile("./dist/index2.html", htmlDoc, (err) =>
     err ? console.log(err) : console.log("Success!")
   );
@@ -170,13 +191,93 @@ function writeToFile(filename, data) {
 
 //generate the html file
 function generateHtml(data) {
-  return `<div>${data.name}</div>
-
-
-
-
-  
-  `;
+  let currentObject;
+  data.forEach((item) => {
+    console.log("item here is", item);
+    if (item.getRole() === "Manager") {
+      console.log("found it inside the for each", item.name);
+      currentObject = `<!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Document</title>
+          <link rel="stylesheet" href="./style.css" />
+          <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+            crossorigin="anonymous"
+          />
+        </head>
+        <body>
+          <header>
+            <div class="head">My Team</div>
+          </header>
+      
+          <div class="grid">
+            <div class="g-col-6 g-col-md-4">
+              <div class="card single-card" style="width: 18rem">
+                <div class="card-header d">${item.name}<br />Manager/Intern/Engineer</div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">ID:${item.id}</li>
+                  <li class="list-group-item">Email:${item.email}</li>
+                  <li class="list-group-item">Office#: ${item.officeNumber}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+      
+          <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"
+          ></script>
+        </body>
+      </html>`;
+    }
+  });
+  return currentObject;
 }
 
-console.log("all people", allPeople);
+// let html = `<!DOCTYPE html>
+// <html lang="en">
+//   <head>
+//     <meta charset="UTF-8" />
+//     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+//     <title>Document</title>
+//     <link rel="stylesheet" href="./style.css" />
+//     <link
+//       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+//       rel="stylesheet"
+//       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+//       crossorigin="anonymous"
+//     />
+//   </head>
+//   <body>
+//     <header>
+//       <div class="head">My Team</div>
+//     </header>
+
+//     <div class="grid">
+//       <div class="g-col-6 g-col-md-4">
+//         <div class="card single-card" style="width: 18rem">
+//           <div class="card-header d">${item.name}<br />Manager/Intern/Engineer</div>
+//           <ul class="list-group list-group-flush">
+//             <li class="list-group-item">ID:${item.id}</li>
+//             <li class="list-group-item">Email:${item.email}</li>
+//             <li class="list-group-item">Office#: ${item.officeNumber}</li>
+//           </ul>
+//         </div>
+//       </div>
+//     </div>
+
+//     <script
+//       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+//       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+//       crossorigin="anonymous"
+//     ></script>
+//   </body>
+// </html>`;
