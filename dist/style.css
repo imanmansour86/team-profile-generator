@@ -1,0 +1,15 @@
+.head {
+  font-size: 40px;
+  background-color: gray;
+  padding: 40px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 10px;
+}

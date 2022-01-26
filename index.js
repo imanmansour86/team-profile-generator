@@ -2,8 +2,12 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 
+var managers = [];
+var engineers = [];
+var interns = [];
+
 //manager questions
-const maangerQuestions = [
+const managerQuestions = [
   {
     type: "input",
     message: "What is the team manager’s name",
@@ -24,16 +28,16 @@ const maangerQuestions = [
     message: "What is team manager’s office number",
     name: "managerOffice",
   },
-  {
-    type: "list",
-    message: "Which type of team member would you like to add",
-    name: "managerChoice",
-    choices: [
-      "Engineer",
-      "Intern",
-      "I dont' want to add any more team members",
-    ],
-  },
+  //   {
+  //     type: "list",
+  //     message: "Which type of team member would you like to add",
+  //     name: "managerChoice",
+  //     choices: [
+  //       "Engineer",
+  //       "Intern",
+  //       "I dont' want to add any more team members",
+  //     ],
+  //   },
 ];
 //engineer questions
 const engineerQuestions = [
@@ -82,6 +86,34 @@ const internQuestions = [
     name: "internSchool",
   },
 ];
+//add more people questions
+const addMoreQuestions = [
+  {
+    type: "list",
+    message: "Which type of team member would you like to add",
+    name: "addMore",
+    choices: [
+      "Engineer",
+      "Intern",
+      "I dont' want to add any more team members",
+    ],
+  },
+];
+
+function addMore() {
+  inquirer.prompt(addMoreQuestions).then((addMoreQuestionsResponse) => {
+    switch (addMoreQuestionsResponse.addMore) {
+      case "Engineer":
+        addEngineer();
+        break;
+      case "Intern":
+        addIntern();
+        break;
+      case "I dont' want to add any more team members":
+        console.log("GoodBye");
+    }
+  });
+}
 
 // call on the function to dispaly main menu
 init();
@@ -91,18 +123,21 @@ function init() {
 }
 
 function mainMenu() {
-  inquirer.prompt(maangerQuestions).then((managerResponse) => {
-    // console.log(managerResponse);
-    switch (managerResponse.managerChoice) {
-      case "Add Engineer":
-        addEngineer();
-        break;
-      case "Add Intern":
-        addIntern();
-        break;
-      case "Exit":
-        console.log("GoodBye");
-    }
+  inquirer.prompt(managerQuestions).then((managerResponse) => {
+    console.log(managerResponse);
+    managers.push(managerResponse);
+    addMore();
+
+    // switch (managerResponse.managerChoice) {
+    //   case "Engineer":
+    //     addEngineer();
+    //     break;
+    //   case "Intern":
+    //     addIntern();
+    //     break;
+    //   case "I dont' want to add any more team members":
+    //     console.log("GoodBye");
+    // }
   });
 }
 
@@ -110,14 +145,15 @@ function mainMenu() {
 function addEngineer() {
   inquirer.prompt(engineerQuestions).then((engineerResponse) => {
     console.log(engineerResponse);
-    init();
+    engineers.push(engineerResponse);
+    addMore();
   });
 }
 
 //function to add intern
 function addIntern() {
-  inquirer.prompt(internQuestions).then((engineerResponse) => {
-    console.log(engineerResponse);
-    mainMenu();
+  inquirer.prompt(internQuestions).then((internResponse) => {
+    console.log(internResponse);
+    addMore();
   });
 }
