@@ -1,6 +1,10 @@
 //packages needed for this application
 const fs = require("fs");
 const inquirer = require("inquirer");
+const Employee = require("./lib/employee");
+const Manager = require("./lib/manager");
+const Intern = require("./lib/intern");
+const Engineer = require("./lib/engineer");
 
 var allPeople = [];
 
@@ -9,7 +13,7 @@ const managerQuestions = [
   {
     type: "input",
     message: "What is the team manager’s name",
-    name: "name",
+    name: "managerName",
   },
   {
     type: "input",
@@ -32,7 +36,7 @@ const engineerQuestions = [
   {
     type: "input",
     message: "What is the engineer’s name",
-    name: "name",
+    name: "engineerName",
   },
   {
     type: "input",
@@ -113,19 +117,14 @@ function init() {
 function mainMenu() {
   inquirer.prompt(managerQuestions).then((managerResponse) => {
     console.log(managerResponse);
-    writeToFile("./dist/index2.html", managerResponse);
+    const manager = new Manager(
+      managerResponse.managerName,
+      managerResponse.managerId,
+      managerResponse.managerEmail,
+      managerResponse.managerOffice
+    );
+    allPeople.push(maanger);
     addMore();
-
-    // switch (managerResponse.managerChoice) {
-    //   case "Engineer":
-    //     addEngineer();
-    //     break;
-    //   case "Intern":
-    //     addIntern();
-    //     break;
-    //   case "I dont' want to add any more team members":
-    //     console.log("GoodBye");
-    // }
   });
 }
 
@@ -133,8 +132,15 @@ function mainMenu() {
 function addEngineer() {
   inquirer.prompt(engineerQuestions).then((engineerResponse) => {
     console.log(engineerResponse);
-    appendFile("index2.html", engineerResponse);
-    engineers.push(engineerResponse);
+    const engineer = new Engineer(
+      engineerResponse.engineerName,
+      engineerResponse.engineerId,
+      engineerResponse.engineerEmail,
+      engineerResponse.engineerGithub
+    );
+
+    allPeople.push(engineer);
+
     addMore();
   });
 }
@@ -143,6 +149,13 @@ function addEngineer() {
 function addIntern() {
   inquirer.prompt(internQuestions).then((internResponse) => {
     console.log(internResponse);
+    const intern = new Intern(
+      internResponse.internName,
+      internResponse.internId,
+      internResponse.internEmail,
+      internResponse.internSchool
+    );
+    allPeople.push(intern);
     addMore();
   });
 }
@@ -165,3 +178,5 @@ function generateHtml(data) {
   
   `;
 }
+
+console.log("all people", allPeople);
