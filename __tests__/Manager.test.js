@@ -10,6 +10,15 @@ describe("Manager", () => {
       expect(manager.email).toEqual("mike@gmail.com");
       expect(manager.officeNumber).toEqual("202");
     });
+
+    it("should throw an error if manager 'name' is not a string", () => {
+      const cb = () => new Manager(22, 202, "mike@gmail.com", "202");
+      const err = new Error(
+        "Expected parameter 'name' to be a non-empty string"
+      );
+
+      expect(cb).toThrowError(err);
+    });
   });
 
   describe("getOffice", () => {

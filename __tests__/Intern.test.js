@@ -10,6 +10,15 @@ describe("Intern", () => {
       expect(intern.email).toEqual("mike@gmail.com");
       expect(intern.school).toEqual("Berkeley");
     });
+
+    it("should throw an error if intern 'name' is not a string", () => {
+      const cb = () => new Intern(22, 202, "mike@gmail.com", "Berkeley");
+      const err = new Error(
+        "Expected parameter 'name' to be a non-empty string"
+      );
+
+      expect(cb).toThrowError(err);
+    });
   });
 
   describe("getSchool", () => {

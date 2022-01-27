@@ -9,6 +9,15 @@ describe("Employee", () => {
       expect(employee.id).toEqual(202);
       expect(employee.email).toEqual("mike@gmail.com");
     });
+
+    it("should throw an error if employee 'name' is not a string", () => {
+      const cb = () => new Employee(33, 202, "mike@gmail.com");
+      const err = new Error(
+        "Expected parameter 'name' to be a non-empty string"
+      );
+
+      expect(cb).toThrowError(err);
+    });
   });
 
   describe("getName", () => {
