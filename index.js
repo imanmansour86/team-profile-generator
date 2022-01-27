@@ -200,48 +200,63 @@ function generateHtml(data) {
           <div class="grid">
             <div class="g-col-6 g-col-md-4">
               <div class="card single-card" style="width: 18rem">
-                <div class="card-header d">${item.getRole()}
-                <br />${item.name}</div>
+                <div class="card-header d">${item.name}
+                <br />${item.getRole()}</div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">ID:${item.id}</li>
-                  <li class="list-group-item">Email:${item.email}</li>
-                  <li class="list-group-item">Office#: ${item.officeNumber}</li>
+                  <li class="list-group-item">ID: ${item.id}</li>
+                  <li class="list-group-item">Email: 
+                  <a href="mailto:${item.email}" target="blank">${
+        item.email
+      }</a>
+                       
+                  </li>
+               <li class="list-group-item">Office#: ${item.officeNumber}</li>
                 </ul>
               </div>
             </div>
           </div>
       
           `;
-    } else if (item.getRole() == "Engineer") {
+    } else if (item.getRole() === "Engineer") {
       currentObject += `
       
           <div class="grid">
             <div class="g-col-6 g-col-md-4">
               <div class="card single-card" style="width: 18rem">
-                <div class="card-header d">${item.getRole()}
-                <br />${item.name}/div>
+                <div class="card-header d">${item.name}
+                <br />${item.getRole()}</div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">ID:${item.id}</li>
-                  <li class="list-group-item">Email:${item.email}</li>
-                  <li class="list-group-item">Office#: ${item.github}</li>
+                  <li class="list-group-item">ID: ${item.id}</li>
+                  <li class="list-group-item">Email: 
+                  <a href="mailto:${item.email}" target="blank">${
+        item.email
+      }</a>
+                       
+                  </li>
+                  <li class="list-group-item">Github:<a href="https://github.com/${item.getGithub()}" target ="blank"> ${item.getGithub()}</a></li>
                 </ul>
               </div>
             </div>
           </div>
       
           `;
-    } else if (item.getRole() == "Intern") {
+    } else if (item.getRole() === "Intern") {
       currentObject += `
       
           <div class="grid">
             <div class="g-col-6 g-col-md-4">
               <div class="card single-card" style="width: 18rem">
-                <div class="card-header d">${item.getRole()}
-                <br />${item.name}/div>
+                <div class="card-header d">${item.name}
+                <br />${item.getRole()}</div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">ID:${item.id}</li>
-                  <li class="list-group-item">Email:${item.email}</li>
-                  <li class="list-group-item">Office#: ${item.getSchool()}</li>
+                  <li class="list-group-item">ID: ${item.id}</li>
+                  <li class="list-group-item">Email: 
+                  <a href="mailto:${item.email}" target="blank">${
+        item.email
+      }</a>
+                       
+                  </li>
+                  <li class="list-group-item">School: ${item.getSchool()}</li>
                 </ul>
               </div>
             </div>
