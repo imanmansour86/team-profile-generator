@@ -10,17 +10,15 @@ function generateHtml(data) {
             <div class="grid">
               <div class="g-col-6 g-col-md-4">
                 <div class="card single-card" style="width: 18rem">
-                  <div class="card-header d">${item.name}
+                  <div class="card-header d">${item.getName()}
                   <br />${item.getRole()}</div>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${item.id}</li>
+                    <li class="list-group-item">ID: ${item.getId()}</li>
                     <li class="list-group-item">Email: 
-                    <a href="mailto:${item.email}" target="blank">${
-        item.email
-      }</a>
+                    <a href="mailto:${item.getEmail()}" target="blank">${item.getEmail()}</a>
                          
                     </li>
-                 <li class="list-group-item">Office#: ${item.officeNumber}</li>
+                 <li class="list-group-item">Office#: ${item.getOffice()}</li>
                   </ul>
                 </div>
               </div>
@@ -32,14 +30,12 @@ function generateHtml(data) {
         
           
                 <div class="card single-card" style="width: 18rem">
-                  <div class="card-header d">${item.name}
+                  <div class="card-header d">${item.getName()}
                   <br />${item.getRole()}</div>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${item.id}</li>
+                    <li class="list-group-item">ID: ${item.getId()}</li>
                     <li class="list-group-item">Email: 
-                    <a href="mailto:${item.email}" target="blank">${
-        item.email
-      }</a>
+                    <a href="mailto:${item.getEmail()}" target="blank">${item.getEmail()}</a>
                          
                     </li>
                     <li class="list-group-item">Github:<a href="https://github.com/${item.getGithub()}" target ="blank"> ${item.getGithub()}</a></li>
@@ -54,12 +50,12 @@ function generateHtml(data) {
             <div class="grid">
               <div class="g-col-6 g-col-md-4">
                 <div class="card single-card" style="width: 18rem">
-                  <div class="card-header d">${item.name}
+                  <div class="card-header d">${item.getName()}
                   <br />${item.getRole()}</div>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${item.id}</li>
+                    <li class="list-group-item">ID: ${item.getId()}</li>
                     <li class="list-group-item">Email: 
-                    <a href="mailto:${item.email}" target="blank">${
+                    <a href="mailto:${item.getEmail()}" target="blank">${
         item.email
       }</a>
                          
