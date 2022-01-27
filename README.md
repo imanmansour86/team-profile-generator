@@ -1,5 +1,9 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
+![lang](https://img.shields.io/github/languages/top/imanmansour86/team-profile-generator)
+![repo size](https://img.shields.io/github/repo-size/imanmansour86/team-profile-generator)
+![last commit](https://img.shields.io/github/last-commit/imanmansour86/team-profile-generator)
+
 # Team profile generator
 
 ## Description
