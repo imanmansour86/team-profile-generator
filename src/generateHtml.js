@@ -7,7 +7,7 @@ function generateHtml(data) {
     if (item.getRole() === "Manager") {
       currentObject += `
         
-            <div class="grid">
+          
               <div class="g-col-6 g-col-md-4">
                 <div class="card single-card" style="width: 18rem">
                   <div class="card-header d">${item.getName()}
@@ -22,13 +22,13 @@ function generateHtml(data) {
                   </ul>
                 </div>
               </div>
-            </div>
+      
         
             `;
     } else if (item.getRole() === "Engineer") {
       currentObject += `
         
-          
+      <div class="g-col-6 g-col-md-4">
                 <div class="card single-card" style="width: 18rem">
                   <div class="card-header d">${item.getName()}
                   <br />${item.getRole()}</div>
@@ -41,13 +41,13 @@ function generateHtml(data) {
                     <li class="list-group-item">Github:<a href="https://github.com/${item.getGithub()}" target ="blank"> ${item.getGithub()}</a></li>
                   </ul>
                 </div>
-           
+                </div>
         
             `;
     } else if (item.getRole() === "Intern") {
       currentObject += `
         
-            <div class="grid">
+         
               <div class="g-col-6 g-col-md-4">
                 <div class="card single-card" style="width: 18rem">
                   <div class="card-header d">${item.getName()}
@@ -64,8 +64,7 @@ function generateHtml(data) {
                   </ul>
                 </div>
               </div>
-            </div>
-        
+           
             `;
     }
   });
