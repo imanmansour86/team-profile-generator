@@ -44,10 +44,10 @@ This app is a Node.js command-line application that collects information about e
 
 Screenshot of questions prompt in command line:
 
-![command-line]()
+![command-line](/images/questions.png)
 
-Screenshot of the response:
-![response]()
+Screenshot of collected response:
+![response](/images/response.png)
 
 ## Demo
 
