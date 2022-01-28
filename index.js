@@ -1,7 +1,6 @@
 //packages needed for this application
 const fs = require("fs");
 const inquirer = require("inquirer");
-const Employee = require("./lib/employee");
 const Manager = require("./lib/manager");
 const Intern = require("./lib/intern");
 const Engineer = require("./lib/engineer");
@@ -105,7 +104,7 @@ function addMore() {
       case "I dont' want to add any more team members":
         console.log("GoodBye");
 
-        writeToFile("./dist/index2.html", allPeople);
+        writeToFile("./dist/index.html", allPeople);
     }
   });
 }
@@ -127,14 +126,6 @@ function mainMenu() {
       managerResponse.managerOffice
     );
     allPeople.push(manager);
-
-    allPeople.forEach((a) => {
-      if (a.getRole() === "Manager") {
-        console.log("Manager found");
-      }
-    });
-
-    console.log("all people after add manager", allPeople);
 
     addMore();
   });
@@ -167,24 +158,17 @@ function addIntern() {
       internResponse.internEmail,
       internResponse.internSchool
     );
-    console.log(intern.getRole());
+
     allPeople.push(intern);
-    allPeople.forEach((a) => {
-      if (a.getRole() === "Intern") {
-        console.log("found it");
-      }
-    });
-    console.log("all people after add intern", allPeople);
+
     addMore();
   });
 }
 
 //function to write html file
 function writeToFile(filename, data) {
-  console.log("data here is", data);
   const htmlDoc = generateHtml(data);
-  console.log("html doc here", htmlDoc);
-  fs.writeFile("./dist/index2.html", htmlDoc, (err) =>
+  fs.writeFile("./dist/index.html", htmlDoc, (err) =>
     err ? console.log(err) : console.log("Success!")
   );
 }
