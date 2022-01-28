@@ -40,13 +40,14 @@ This app is a Node.js command-line application that collects information about e
   $ node index.js
   ```
 
-  ## Usage
+## Usage
 
 Screenshot of questions prompt in command line:
 
 ![command-line](/images/questions.png)
 
 Screenshot of collected response:
+
 ![response](/images/response.png)
 
 ## Demo
@@ -59,10 +60,10 @@ When running the app in terminal, the user will be prompted to enter the team ma
 
 ## Tests
 
-Unit tests are written for each class: Employee, Manager, Engineer and Intern. The testing covers the initilization of new instance of the class, as well as testing the methods.
+Unit tests are written for each class: Employee, Manager, Engineer and Intern. The testing covers the initilization of new instance of the class, as well as testing the methods of the classes.
 
 To run the test:
-Navigate to app's directoty in termina and run:
+Navigate to app's directoty in terminal and run:
 
 ```md
 $ npm run test
