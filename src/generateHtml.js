@@ -7,7 +7,6 @@ function generateHtml(data) {
     if (item.getRole() === "Manager") {
       currentObject += `
         
-          
               <div class="g-col-6 g-col-md-4">
                 <div class="card single-card" style="width: 18rem">
                   <div class="card-header d">${item.getName()}
@@ -23,7 +22,6 @@ function generateHtml(data) {
                 </div>
               </div>
       
-        
             `;
     } else if (item.getRole() === "Engineer") {
       currentObject += `
@@ -47,7 +45,6 @@ function generateHtml(data) {
     } else if (item.getRole() === "Intern") {
       currentObject += `
         
-         
               <div class="g-col-6 g-col-md-4">
                 <div class="card single-card" style="width: 18rem">
                   <div class="card-header d">${item.getName()}
@@ -58,7 +55,6 @@ function generateHtml(data) {
                     <a href="mailto:${item.getEmail()}" target="blank">${
         item.email
       }</a>
-                         
                     </li>
                     <li class="list-group-item">School: ${item.getSchool()}</li>
                   </ul>
@@ -91,10 +87,8 @@ function generateHtml(data) {
   
       <div class="grid">
    
-  
       ${currentObject}
   
-   
       </div>
       
       <script
